@@ -1,4 +1,10 @@
-const { cpSync, rmSync, readFileSync, writeFileSync, readdirSync } = require("node:fs");
+const {
+  cpSync,
+  rmSync,
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+} = require("node:fs");
 const { join } = require("node:path");
 
 const BUILD_DIR = "dist";
