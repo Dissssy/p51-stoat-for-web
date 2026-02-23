@@ -7,6 +7,7 @@ import { styled } from "styled-system/jsx";
 
 import badgeJoke1 from "../../../../../public/assets/badges/amog.svg";
 import badgeJoke2 from "../../../../../public/assets/badges/amorbus.svg";
+import badgeActiveSupporter from "../../../../../public/assets/badges/battlepass.svg";
 import badgeDeveloper from "../../../../../public/assets/badges/developer.svg";
 import badgeEarlyAdopter from "../../../../../public/assets/badges/early_adopter.svg";
 import badgeFounder from "../../../../../public/assets/badges/founder.svg";
@@ -95,6 +96,18 @@ export function ProfileBadges(props: { user: User }) {
               }}
             >
               <img src={badgeModeration} />
+            </span>
+          </Show>
+          <Show when={props.user.badges & UserBadges.ActiveSupporter}>
+            <span
+              use:floating={{
+                tooltip: {
+                  placement: "top",
+                  content: t`Donating to Stoat`,
+                },
+              }}
+            >
+              <img src={badgeActiveSupporter} />
             </span>
           </Show>
           <Show when={props.user.badges & UserBadges.ResponsibleDisclosure}>

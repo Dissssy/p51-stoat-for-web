@@ -1087,11 +1087,11 @@ msgstr ""
 
 #: src/interface/Home.tsx
 msgid "Donate to Stoat"
-msgstr "Donate to Dissy"
+msgstr "Donate to Planet 51"
 
 #: components/ui/components/features/profiles/ProfileBadges.tsx
 msgid "Donated to Stoat"
-msgstr "Donated to Dissy"
+msgstr "Donated to Planet 51"
 
 #: components/modal/modals/MFARecovery.tsx
 msgid "Done"
@@ -1951,7 +1951,7 @@ msgstr "Once it's deleted, there's no going back."
 
 #: components/ui/components/features/profiles/ProfileBadges.tsx
 msgid "One of the first 1000 users!"
-msgstr ""
+msgstr "Joined within the first year!"
 
 #: src/interface/Friends.tsx
 #: src/interface/navigation/servers/UserMenu.tsx
