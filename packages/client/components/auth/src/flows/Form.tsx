@@ -9,7 +9,13 @@ import { Checkbox2, Column, Text, TextField } from "@revolt/ui";
 /**
  * Available field types
  */
-type Field = "email" | "password" | "new-password" | "log-out" | "username";
+type Field =
+  | "email"
+  | "password"
+  | "new-password"
+  | "log-out"
+  | "username"
+  | "invite-code";
 
 /**
  * Properties to apply to fields
@@ -23,12 +29,14 @@ const useFieldConfiguration = () => {
       name: () => t`Email`,
       placeholder: () => t`Please enter your email.`,
       autocomplete: "email",
+      value: undefined,
     },
     password: {
       minLength: 8,
       type: "password" as const,
       name: () => t`Password`,
       placeholder: () => t`Enter your current password.`,
+      value: undefined,
     },
     "new-password": {
       minLength: 8,
@@ -36,9 +44,11 @@ const useFieldConfiguration = () => {
       autocomplete: "new-password",
       name: () => t`New Password`,
       placeholder: () => t`Enter a new password.`,
+      value: undefined,
     },
     "log-out": {
       name: () => t`Log out of all other sessions`,
+      value: undefined,
     },
     username: {
       minLength: 2,
@@ -46,6 +56,16 @@ const useFieldConfiguration = () => {
       autocomplete: "none",
       name: () => t`Username`,
       placeholder: () => t`Enter your preferred username.`,
+      value: undefined,
+    },
+    "invite-code": {
+      type: "text" as const,
+      name: () => t`Invite Code`,
+      placeholder: () => t`Enter your invite code.`,
+      value: () => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("code") || undefined;
+      },
     },
   };
 };
@@ -78,6 +98,7 @@ export function Fields(props: FieldProps) {
               name={field}
               label={fieldConfiguration[field].name()}
               placeholder={fieldConfiguration[field].placeholder()}
+              value={fieldConfiguration[field].value?.() || ""}
             />
           )}
         </label>
@@ -100,7 +121,7 @@ interface Props {
   /**
    * Submission handler
    */
-  onSubmit: (data: FormData) => Promise<void> | void;
+  onSubmit: (data: FormData) => Promise | void;
 }
 
 /**

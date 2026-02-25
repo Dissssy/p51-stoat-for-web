@@ -2546,23 +2546,23 @@ msgstr "Status"
 
 #: components/app/interface/settings/user/Native.tsx
 #~ msgid "Stoat Desktop"
-#~ msgstr "Stoat Desktop"
+#~ msgstr "Planet 51 Desktop"
 
 #: components/ui/components/features/profiles/ProfileBadges.tsx
 msgid "Stoat Developer"
-msgstr "Stoat Developer"
+msgstr "Planet 51 Developer"
 
 #: components/app/interface/settings/user/Native.tsx
 msgid "Stoat for Desktop"
-msgstr "Stoat for Desktop"
+msgstr "Planet 51 for Desktop"
 
 #: components/ui/components/features/profiles/ProfileBadges.tsx
 msgid "Stoat Founder"
-msgstr "Stoat Founder"
+msgstr "Planet 51 Founder"
 
 #: components/auth/src/flows/FlowHome.tsx
 msgid "Stoat is one of the best ways to stay connected with your friends and community, anywhere, anytime."
-msgstr "Stoat is one of the best ways to stay connected with your friends and community, anywhere, anytime."
+msgstr "Planet 51 is one of the best ways to stay connected with your friends and community, anywhere, anytime."
 
 #: components/app/interface/settings/user/Feedback.tsx
 msgid "Submit feature suggestion"
