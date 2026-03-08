@@ -1,14 +1,15 @@
-import { For, Show } from "solid-js";
+import { For } from "solid-js";
 
-import { Trans, useLingui } from "@lingui-solid/solid/macro";
+import { useLingui } from "@lingui-solid/solid/macro";
 import { Channel } from "stoat.js";
 import { styled } from "styled-system/jsx";
 
+import MdCall from "@material-design-icons/svg/filled/call.svg?component-solid";
 import { useUsers } from "@revolt/markdown/users";
 import { useVoice } from "@revolt/rtc";
-import { Avatar, Ripple, Text } from "@revolt/ui/components/design";
+import { Avatar, Ripple } from "@revolt/ui/components/design";
 import { Row } from "@revolt/ui/components/layout";
-import { Symbol } from "@revolt/ui/components/utils/Symbol";
+// import { Symbol } from "@revolt/ui/components/utils/Symbol";
 
 /**
  * Call card (preview)
@@ -32,21 +33,34 @@ export function VoiceCallCardPreview(props: { channel: Channel }) {
     <Preview onClick={() => voice.connect(props.channel)}>
       <Ripple />
       <Row>
-        <For each={users()} fallback={<Symbol size={24}>voice_chat</Symbol>}>
+        {/* <For each={users()} fallback={<Symbol size={24}>voice_chat</Symbol>}> */}
+        <For
+          each={users()}
+          fallback={
+            <MdCall
+              style={{
+                width: "24px",
+                height: "24px",
+                stroke: "var(--md-sys-color-on-surface)",
+                fill: "var(--md-sys-color-on-surface)",
+              }}
+            />
+          }
+        >
           {(user) => (
             <Avatar size={24} src={user?.avatar} fallback={user?.username} />
           )}
         </For>
       </Row>
-      <Text class="title" size="large">
+      {/* <Text class="title" size="large">
         <Show
           when={voice.state() === "READY"}
           fallback={<Trans>Switch to this voice channel</Trans>}
         >
           <Trans>Join the voice channel</Trans>
         </Show>
-      </Text>
-      <Text class="body">{subtext()}</Text>
+      </Text> */}
+      {/* <Text class="body">{subtext()}</Text> */}
     </Preview>
   );
 }

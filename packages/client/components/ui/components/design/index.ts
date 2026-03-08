@@ -43,6 +43,7 @@ export { MenuButton } from "./MenuButton";
 export { Radio2 } from "./Radio";
 export { Ripple } from "./Ripple";
 export { Slider } from "./Slider";
+export { SplitMultiButton } from "./SplitMultiButton";
 export { Switch } from "./Switch";
 export { Text, typography } from "./Text";
 export { TextEditor } from "./TextEditor";

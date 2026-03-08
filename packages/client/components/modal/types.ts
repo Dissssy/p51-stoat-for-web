@@ -314,8 +314,4 @@ export type Modals =
       type: "edit_category";
       server: Server;
       category: CategoryData;
-    }
-  | {
-      type: "create_instance_invite";
-      client: Client;
     };

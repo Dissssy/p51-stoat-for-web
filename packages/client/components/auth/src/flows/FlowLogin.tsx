@@ -1,8 +1,8 @@
-import { Match, Switch } from "solid-js";
+import { createEffect, createSignal, Match, Switch } from "solid-js";
 
 import { Trans } from "@lingui-solid/solid/macro";
 
-import { useClientLifecycle } from "@revolt/client";
+import { useClient, useClientLifecycle } from "@revolt/client";
 import { State, TransitionType } from "@revolt/client/Controller";
 import { useModals } from "@revolt/modal";
 import { Navigate } from "@revolt/routing";
@@ -10,13 +10,14 @@ import {
   Button,
   CircularProgress,
   Column,
+  iconSize,
   Row,
   Text,
-  iconSize,
 } from "@revolt/ui";
 
 import MdArrowBack from "@material-design-icons/svg/filled/arrow_back.svg?component-solid";
 
+import { t } from "@lingui/core/macro";
 import { useState } from "@revolt/state";
 import { FlowTitle } from "./Flow";
 import { Fields, Form } from "./Form";
@@ -109,6 +110,8 @@ export default function FlowLogin() {
             </Trans>
           </Text>
 
+          <MaybeShowLeafWarning />
+
           <Form onSubmit={select}>
             <Fields fields={["username"]} />
             <Row align justify>
@@ -130,5 +133,56 @@ export default function FlowLogin() {
         </Match>
       </Switch>
     </>
+  );
+}
+
+function MaybeShowLeafWarning() {
+  // We need to make a request to https://planetfifty.one/extras/leaf_parent to determine if the user is a leaf account.
+  const [parentAccount, setParentAccount] = createSignal<string | null>(null);
+  const client = useClient();
+
+  createEffect(async () => {
+    try {
+      const [authHeader, authHeaderValue] = client()!.authenticationHeader;
+      // this isnt a real endpoint, hacking this in to my instance, so we're gonna have to make a raw api call here
+      await fetch(`https://planetfifty.one/extras/leaf_parent`, {
+        method: "GET",
+        headers: {
+          [authHeader]: authHeaderValue,
+        },
+      }).then(async (res) => {
+        if (!res.ok)
+          throw new Error(t`Failed to fetch leaf parent account information`);
+        const body = await res.json();
+        setParentAccount((body["leaf_parent"] ?? {}).display_name ?? null);
+      });
+    } catch (error) {
+      setParentAccount(null);
+    }
+  });
+  return (
+    <>
+      {parentAccount() !== null && (
+        <>
+          <Text>
+            <LeafWarning username={parentAccount()!} />
+          </Text>
+        </>
+      )}
+    </>
+  );
+}
+
+// #: components/auth/src/flows/FlowLogin.tsx
+// msgid "Leaf Account Warning"
+// msgstr "You're signing up with a leaf account, which will give {username} limited access to information about your account and activity. If you believe this is an error, please request a new invite from {username}."
+
+function LeafWarning({ username }: { username: string }) {
+  return (
+    <Text>
+      You're signing up with a leaf account, which will give {username} limited
+      access to information about your account and activity. If you believe this
+      is an error, please request a new invite from {username}.
+    </Text>
   );
 }

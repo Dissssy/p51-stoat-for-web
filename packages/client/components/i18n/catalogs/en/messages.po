@@ -3193,3 +3193,47 @@ msgstr "Your user has already been created? Try logging in again or refreshing t
 #: components/app/interface/settings/UserSettings.tsx
 msgid "Invite Someone"
 msgstr "Invite Someone"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "This invite is one use, and will be tied to your account."
+msgstr "This invite is one use, and will be tied to your account."
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Inviting many low quality users may result in your account receiving a strike or being banned."
+msgstr "Inviting many low quality users may result in your account receiving a strike or being banned."
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Invite created! Here is your invite link:"
+msgstr "Invite created! Here is your invite link:"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Create Invite"
+msgstr "Create Invite"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Existing Invites"
+msgstr "Existing Invites"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Failed to revoke invite"
+msgstr "Failed to revoke invite"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Failed to fetch invites"
+msgstr "Failed to fetch invites"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Failed to create invite"
+msgstr "Failed to create invite"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Invite link copied to clipboard"
+msgstr "Invite link copied to clipboard"
+
+#: components/auth/src/flows/FlowLogin.tsx
+msgid "Failed to fetch leaf parent account information"
+msgstr "Failed to fetch leaf parent account information"
+
+#: components/auth/src/flows/FlowLogin.tsx
+msgid "Leaf Account Warning"
+msgstr "You're signing up with a leaf account, which will give {username} limited access to information about your account and activity. If you believe this is an error, please request a new invite from {username}."

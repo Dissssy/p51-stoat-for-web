@@ -20,7 +20,6 @@ import MdRateReview from "@material-design-icons/svg/outlined/rate_review.svg?co
 import MdScience from "@material-design-icons/svg/outlined/science.svg?component-solid";
 import MdSmartToy from "@material-design-icons/svg/outlined/smart_toy.svg?component-solid";
 import MdVerifiedUser from "@material-design-icons/svg/outlined/verified_user.svg?component-solid";
-import MdWorkspacePremium from "@material-design-icons/svg/outlined/workspace_premium.svg?component-solid";
 
 import pkg from "../../../../../../package.json";
 
@@ -185,17 +184,17 @@ const Config: SettingsConfiguration = {
             },
           ],
         },
-        {
-          title: <Trans>Subscriptions</Trans>,
-          hidden: import.meta.env.PROD,
-          entries: [
-            {
-              id: "subscribe",
-              icon: <MdWorkspacePremium {...iconSize(20)} />,
-              title: "[premium]",
-            },
-          ],
-        },
+        // {
+        //   title: <Trans>Subscriptions</Trans>,
+        //   hidden: import.meta.env.PROD,
+        //   entries: [
+        //     {
+        //       id: "subscribe",
+        //       icon: <MdWorkspacePremium {...iconSize(20)} />,
+        //       title: "[premium]",
+        //     },
+        //   ],
+        // },
         {
           title: <Trans>Client Settings</Trans>,
           entries: [

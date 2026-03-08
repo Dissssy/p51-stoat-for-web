@@ -1,78 +1,24 @@
-import { Show, createRenderEffect, on, splitProps } from "solid-js";
+import { JSX, Show, createRenderEffect, on, splitProps } from "solid-js";
 
 import { createButton } from "@solid-aria/button";
 import { cva } from "styled-system/css/cva";
 
+import { Row } from "@revolt/ui";
 import { Ripple } from "./Ripple";
 import { typography } from "./Text";
 
 type Props = Omit & {
   groupActive?: boolean;
   bg?: string;
+  labelLeft?: JSX.Element;
+  onPressLeft?: () => void | undefined;
+  disabledLeft?: boolean;
+  labelRight?: JSX.Element;
+  onPressRight?: () => void | undefined;
+  disabledRight?: boolean;
 };
 
-/**
- * Buttons prompt most actions in a UI
- *
- * If you wish to create standard button groups:
- *
- * ```tsx
- * <Row>
- *   <Button
- *     onPress={() => setActiveA()}
- *     groupActive={activeA()}
- *     group="standard"
- *   >
- *     Button A
- *   </Button>
- *   <Button
- *     onPress={() => setActiveB()}
- *     groupActive={activeB()}
- *     group="standard"
- *   >
- *     Button B
- *   </Button>
- *   <Button
- *     onPress={() => setActiveC()}
- *     groupActive={activeC()}
- *     group="standard"
- *   >
- *     Button C
- *   </Button>
- * </Row>
- * ```
- *
- * If you wish to create connected button groups:
- *
- * ```tsx
- * <Row>
- *   <Button
- *     onPress={() => setActiveA()}
- *     groupActive={activeA()}
- *     group="connected-start"
- *   >
- *     Button A
- *   </Button>
- *   <Button
- *     onPress={() => setActiveB()}
- *     groupActive={activeB()}
- *     group="connected"
- *   >
- *     Button B
- *   </Button>
- *   <Button
- *     onPress={() => setActiveC()}
- *     groupActive={activeC()}
- *     group="connected-end"
- *   >
- *     Button C
- *   </Button>
- * </Row>
- * ```
- *
- * @specification https://m3.material.io/components/buttons
- */
-export function Button(props: Props) {
+export function SplitMultiButton(props: Props) {
   const [passthrough, propsRest] = splitProps(props, [
     "aria-selected",
     "tabIndex",
@@ -108,31 +54,73 @@ export function Button(props: Props) {
     ),
   );
 
-  const { buttonProps } = createButton(rest, () => ref);
+  var leftRest = {
+    onPress: props.onPressLeft,
+    disabled: props.disabledLeft || false,
+    ...rest,
+  };
+  var rightRest = {
+    onPress: props.onPressRight,
+    disabled: props.disabledRight || false,
+    ...rest,
+  };
+
+  const leftButtonProps = createButton(leftRest, () => ref).buttonProps;
+  const rightButtonProps = createButton(rightRest, () => ref).buttonProps;
+
   return (
-    <button
-      {...passthrough}
-      {...buttonProps}
-      ref={ref}
-      class={button({
-        shape: shape(),
-        variant: variant(),
-        size: style.size,
-        group: style.group,
-        disabled: buttonProps.disabled,
-        _permitAnimation,
-      })}
-      style={{
-        "background-color": style.bg,
-        width: "fit-content",
-      }}
-      // @codegen directives props=rest include=floating
-    >
-      <Show when={!buttonProps.disabled}>
-        <Ripple />
-      </Show>
-      {rest.children}
-    </button>
+    <Row style={{ gap: "0.1em" }}>
+      <button
+        {...passthrough}
+        {...leftButtonProps}
+        ref={ref}
+        class={button({
+          shape: shape(),
+          variant: variant(),
+          size: style.size,
+          group: style.group,
+          disabled: leftRest.disabled,
+          _permitAnimation,
+        })}
+        style={{
+          "background-color": style.bg,
+          // override left button's right border radius:
+          "border-top-right-radius": 0,
+          "border-bottom-right-radius": 0,
+        }}
+        // @codegen directives props=rest include=floating
+      >
+        <Show when={!leftRest.disabled}>
+          <Ripple />
+        </Show>
+        {props.labelLeft}
+      </button>
+      <button
+        {...passthrough}
+        {...rightButtonProps}
+        ref={ref}
+        class={button({
+          shape: shape(),
+          variant: variant(),
+          size: style.size,
+          group: style.group,
+          disabled: rightRest.disabled,
+          _permitAnimation,
+        })}
+        style={{
+          "background-color": style.bg,
+          // override right button's left border radius:
+          "border-top-left-radius": 0,
+          "border-bottom-left-radius": 0,
+        }}
+        // @codegen directives props=rest include=floating
+      >
+        <Show when={!rightRest.disabled}>
+          <Ripple />
+        </Show>
+        {props.labelRight}
+      </button>
+    </Row>
   );
 }
 

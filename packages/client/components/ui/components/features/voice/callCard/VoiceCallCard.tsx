@@ -123,8 +123,8 @@ export function VoiceCallCardContext(props: { children: JSX.Element }) {
                     ? "top-left"
                     : "bottom-left"
                   : top
-                    ? "top-right"
-                    : "bottom-right",
+                  ? "top-right"
+                  : "bottom-right",
               });
             });
           },
@@ -279,7 +279,7 @@ function VoiceCallCard(props: { channel: Channel }) {
   const inCall = () => voice.channel()?.id === props.channel.id;
 
   return (
-    <Base>
+    <Base active={inCall()}>
       <Card active={inCall()}>
         <Show
           when={inCall()}
@@ -305,8 +305,18 @@ const Base = styled("div", {
     userSelect: "none",
 
     display: "flex",
-    alignItems: "center",
     flexDirection: "column",
+    // alignItems: "center",
+  },
+  variants: {
+    active: {
+      true: {
+        alignItems: "center",
+      },
+      false: {
+        alignItems: "flex-end",
+      },
+    },
   },
 });
 
@@ -328,8 +338,8 @@ const Card = styled("div", {
         height: "40vh",
       },
       false: {
-        width: "360px",
-        height: "120px",
+        // width: "360px",
+        // height: "120px",
         cursor: "pointer",
       },
     },

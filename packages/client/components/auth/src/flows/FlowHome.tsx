@@ -6,7 +6,7 @@ import { css } from "styled-system/css";
 import { useClientLifecycle } from "@revolt/client";
 import { TransitionType } from "@revolt/client/Controller";
 import { Navigate } from "@revolt/routing";
-import { Button, Column } from "@revolt/ui";
+import { Button, Column, Row } from "@revolt/ui";
 
 import { useState } from "@revolt/state";
 import Wordmark from "../../../../public/assets/web/wordmark.svg?component-solid";
@@ -64,7 +64,7 @@ export default function FlowHome() {
               </span>
             </Column>
 
-            <Column>
+            <Row align justify>
               <a href="/login/auth">
                 <Column>
                   <Button>
@@ -79,7 +79,7 @@ export default function FlowHome() {
                   </Button>
                 </Column>
               </a>
-            </Column>
+            </Row>
           </Column>
         </>
       }
