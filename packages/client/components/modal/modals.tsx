@@ -183,7 +183,6 @@ export function RenderModal(props: ActiveModal & { onClose: () => void }) {
       return <ResetBotTokenModal {...modalProps} />;
     case "edit_category":
       return <EditCategoryModal {...modalProps} />;
-
     default:
       console.error(
         "Failed to create modal for",

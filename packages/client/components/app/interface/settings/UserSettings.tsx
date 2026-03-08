@@ -1,7 +1,6 @@
 import { Show } from "solid-js";
 
 import { Trans } from "@lingui-solid/solid/macro";
-import { Server } from "stoat.js";
 import { css } from "styled-system/css";
 
 import { useClient, useClientLifecycle } from "@revolt/client";
@@ -26,6 +25,7 @@ import MdWorkspacePremium from "@material-design-icons/svg/outlined/workspace_pr
 import pkg from "../../../../../../package.json";
 
 import { SettingsConfiguration } from ".";
+import CreateInvite from "./instance/CreateInstanceInvite";
 import { MyAccount } from "./user/Account";
 import AdvancedSettings from "./user/Advanced";
 import { Feedback } from "./user/Feedback";
@@ -39,7 +39,7 @@ import { EditProfile } from "./user/profile";
 import { EditSubscription } from "./user/subscriptions";
 import { VoiceSettings } from "./user/voice/VoiceSettings";
 
-const Config: SettingsConfiguration<{ server: Server }> = {
+const Config: SettingsConfiguration = {
   /**
    * Page titles
    * @param key
@@ -93,6 +93,8 @@ const Config: SettingsConfiguration<{ server: Server }> = {
         return <Native />;
       case "voice":
         return <VoiceSettings />;
+      case "create-instance-invite":
+        return <CreateInvite />;
       default:
         return null;
     }
@@ -277,9 +279,14 @@ const Config: SettingsConfiguration<{ server: Server }> = {
               title: <Trans>Advanced</Trans>,
             },
             {
-              href: "https://ko-fi.com/stoatchat",
+              href: "https://ko-fi.com/p51_dissy",
               icon: <MdCoffee {...iconSize(20)} />,
               title: <Trans>Donate</Trans>,
+            },
+            {
+              id: "create-instance-invite",
+              icon: <MdVerifiedUser {...iconSize(20)} />,
+              title: <Trans>Invite Someone</Trans>,
             },
             {
               id: "logout",

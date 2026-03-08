@@ -204,12 +204,12 @@ export type Modals =
   | { type: "mfa_recovery"; codes: string[]; mfa: MFA }
   | {
       type: "onboarding";
-      callback: (username: string, loginAfterSuccess?: true) => Promise<void>;
+      callback: (username: string, loginAfterSuccess?: true) => Promise;
     }
   | {
       type: "policy_change";
       changes: ProtocolV1["types"]["policyChange"][];
-      acknowledge: () => Promise<void>;
+      acknowledge: () => Promise;
     }
   | {
       type: "rename_session";
@@ -271,7 +271,7 @@ export type Modals =
   | {
       type: "user_picker";
       omit?: string[];
-      callback: (users: string[]) => Promise<void>;
+      callback: (users: string[]) => Promise;
     }
   | {
       type: "user_profile";
@@ -314,4 +314,8 @@ export type Modals =
       type: "edit_category";
       server: Server;
       category: CategoryData;
+    }
+  | {
+      type: "create_instance_invite";
+      client: Client;
     };
