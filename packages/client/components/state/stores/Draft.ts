@@ -370,7 +370,7 @@ export class Draft extends AbstractStore {
 
     // Send the message and clear the draft
     try {
-      alert(JSON.stringify(data));
+      // alert(JSON.stringify(data));
       await channel.sendMessage(data, idempotencyKey);
 
       if (files) {
