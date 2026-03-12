@@ -48,7 +48,7 @@ interface Props {
   /**
    * Selected server id
    */
-  selectedServer: Accessor<string | undefined>;
+  selectedServer: Accessor;
 
   /**
    * Create or join server
@@ -166,13 +166,6 @@ export const ServerList = (props: Props) => {
           </a>
           <UserMenu anchor={menuButton} />
         </Tooltip>
-        {/* <Show when={!window.native}>
-          <Tooltip placement="right" content="Switch back to legacy app">
-            <a href="https://app.revolt.chat" class={entryContainer()}>
-              <Symbol>history</Symbol>
-            </a>
-          </Tooltip>
-        </Show> */}
         <For each={props.unreadConversations.slice(0, 9)}>
           {(conversation) => (
             <Tooltip placement="right" content={conversation.displayName}>
@@ -258,9 +251,9 @@ export const ServerList = (props: Props) => {
                     props.selectedServer() === entry.item.id
                       ? "selected"
                       : entry.item.unread &&
-                          !state.notifications.isMuted(entry.item)
-                        ? "alert"
-                        : undefined,
+                        !state.notifications.isMuted(entry.item)
+                      ? "alert"
+                      : undefined,
                 })}
                 use:floating={props.menuGenerator(entry.item)}
               >
