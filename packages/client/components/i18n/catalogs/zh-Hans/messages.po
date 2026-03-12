@@ -603,6 +603,10 @@ msgstr "Chat Input"
 msgid "Check your mail!"
 msgstr ""
 
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Child Account"
+msgstr ""
+
 #: components/auth/src/flows/FlowLogin.tsx
 msgid "Choose a username"
 msgstr "Choose a username"
@@ -861,6 +865,7 @@ msgid "Create invite"
 msgstr ""
 
 #: components/modal/modals/CreateInvite.tsx
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
 msgid "Create Invite"
 msgstr "Create Invite"
 
@@ -1159,8 +1164,8 @@ msgid "Emoji Name"
 msgstr "Emoji Name"
 
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
-msgid "Emoji Pack (affects your messages only)"
-msgstr "Emoji Pack (affects your messages only)"
+#~ msgid "Emoji Pack (affects your messages only)"
+#~ msgstr "Emoji Pack (affects your messages only)"
 
 #: components/app/interface/settings/ServerSettings.tsx
 msgid "Emojis"
@@ -1210,8 +1215,16 @@ msgid "Enter your current password..."
 msgstr "Enter your current password..."
 
 #: components/auth/src/flows/Form.tsx
+msgid "Enter your invite code."
+msgstr ""
+
+#: components/auth/src/flows/Form.tsx
 msgid "Enter your preferred username."
 msgstr ""
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Existing Invites"
+msgstr "Existing Invites"
 
 #: components/modal/modals/LinkWarning.tsx
 msgid "External links can be dangerous!"
@@ -1225,9 +1238,25 @@ msgstr "Extortion or blackmail"
 msgid "Extreme violence, gore or animal cruelty"
 msgstr "Extreme violence, gore or animal cruelty"
 
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+#~ msgid "Failed to create invite"
+#~ msgstr "Failed to create invite"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+#~ msgid "Failed to fetch invites"
+#~ msgstr "Failed to fetch invites"
+
+#: components/auth/src/flows/FlowLogin.tsx
+#~ msgid "Failed to fetch leaf parent account information"
+#~ msgstr "Failed to fetch leaf parent account information"
+
 #: components/i18n/errors.ts
 msgid "Failed to process the image you provided."
 msgstr "Failed to process the image you provided."
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+#~ msgid "Failed to revoke invite"
+#~ msgstr "Failed to revoke invite"
 
 #: components/app/interface/channels/text/DraftMessage.tsx
 msgid "Failed to send"
@@ -1436,13 +1465,26 @@ msgstr ""
 msgid "Invite Bot"
 msgstr "Invite Bot"
 
+#: components/auth/src/flows/Form.tsx
 #: components/app/interface/settings/server/invites/ListServerInvites.tsx
 msgid "Invite Code"
 msgstr ""
 
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+#~ msgid "Invite created! Here is your invite link:"
+#~ msgstr "Invite created! Here is your invite link:"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+#~ msgid "Invite link copied to clipboard"
+#~ msgstr "Invite link copied to clipboard"
+
 #: components/app/interface/settings/channel/permissions/ChannelPermissionsEditor.tsx
 msgid "Invite Others"
 msgstr ""
+
+#: components/app/interface/settings/UserSettings.tsx
+msgid "Invite Someone"
+msgstr "Invite Someone"
 
 #: components/app/interface/settings/server/invites/ListServerInvites.tsx
 msgid "Inviter"
@@ -1451,6 +1493,10 @@ msgstr ""
 #: components/app/interface/settings/ServerSettings.tsx
 msgid "Invites"
 msgstr ""
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Inviting many low quality users may result in your account receiving a strike or being banned."
+msgstr "Inviting many low quality users may result in your account receiving a strike or being banned."
 
 #: components/ui/components/features/profiles/ProfileBadges.tsx
 msgid "irrelevant joke badge 1"
@@ -1480,8 +1526,8 @@ msgid "Join the Stoat Lounge"
 msgstr "Join the Planet 51 Lounge"
 
 #: components/ui/components/features/voice/callCard/VoiceCallCardPreview.tsx
-msgid "Join the voice channel"
-msgstr "Join the voice channel"
+#~ msgid "Join the voice channel"
+#~ msgstr "Join the voice channel"
 
 #: components/ui/components/features/profiles/ProfileJoined.tsx
 #: components/ui/components/features/messaging/elements/Invite.tsx
@@ -1536,6 +1582,10 @@ msgstr ""
 #: components/app/interface/settings/user/Native.tsx
 msgid "Launch Stoat when you log into your computer."
 msgstr "Launch Planet 51 when you log into your computer."
+
+#: components/auth/src/flows/FlowLogin.tsx
+#~ msgid "Leaf Account Warning"
+#~ msgstr "You're signing up with a leaf account, which will give {username} limited access to information about your account and activity. If you believe this is an error, please request a new invite from {username}."
 
 #: components/app/interface/settings/user/bots/MyBots.tsx
 msgid "Learn more about how to create bots on Stoat."
@@ -2132,6 +2182,10 @@ msgstr ""
 msgid "Registered since <0/>"
 msgstr "Registered since <0/>"
 
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Regular Account"
+msgstr ""
+
 #: components/app/menus/UserContextMenu.tsx
 msgid "Reject friend request"
 msgstr "Reject friend request"
@@ -2548,8 +2602,8 @@ msgid "Submit to Discover"
 msgstr "Submit to Discover"
 
 #: components/app/interface/settings/UserSettings.tsx
-msgid "Subscriptions"
-msgstr "Subscriptions"
+#~ msgid "Subscriptions"
+#~ msgstr "Subscriptions"
 
 #: components/app/interface/settings/user/Feedback.tsx
 msgid "Suggest new Stoat features on GitHub discussions."
@@ -2560,8 +2614,8 @@ msgid "Support the project by donating - thank you!"
 msgstr ""
 
 #: components/ui/components/features/voice/callCard/VoiceCallCardPreview.tsx
-msgid "Switch to this voice channel"
-msgstr "Switch to this voice channel"
+#~ msgid "Switch to this voice channel"
+#~ msgstr "Switch to this voice channel"
 
 #: components/app/interface/settings/user/Sync.tsx
 msgid "Sync appearance options, such as chosen emoji pack and message density."
@@ -2664,6 +2718,10 @@ msgstr "This group is too large, you can have up to {0} users."
 #: components/i18n/errors.ts
 msgid "This has already been sent."
 msgstr "This has already been sent."
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "This invite is one use, and will be tied to your account."
+msgstr "This invite is one use, and will be tied to your account."
 
 #: components/ui/components/features/messaging/elements/ConversationStart.tsx
 msgid "This is the start of your conversation."
@@ -3147,51 +3205,3 @@ msgstr "Your role ranking is too low to take this action."
 #: components/i18n/errors.ts
 msgid "Your user has already been created? Try logging in again or refreshing the app."
 msgstr "Your user has already been created? Try logging in again or refreshing the app."
-
-#: components/app/interface/settings/UserSettings.tsx
-msgid "Invite Someone"
-msgstr "Invite Someone"
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "This invite is one use, and will be tied to your account."
-msgstr "This invite is one use, and will be tied to your account."
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Inviting many low quality users may result in your account receiving a strike or being banned."
-msgstr "Inviting many low quality users may result in your account receiving a strike or being banned."
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Invite created! Here is your invite link:"
-msgstr "Invite created! Here is your invite link:"
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Create Invite"
-msgstr "Create Invite"
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Existing Invites"
-msgstr "Existing Invites"
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Failed to revoke invite"
-msgstr "Failed to revoke invite"
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Failed to fetch invites"
-msgstr "Failed to fetch invites"
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Failed to create invite"
-msgstr "Failed to create invite"
-
-#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
-msgid "Invite link copied to clipboard"
-msgstr "Invite link copied to clipboard"
-
-#: components/auth/src/flows/FlowLogin.tsx
-msgid "Failed to fetch leaf parent account information"
-msgstr "Failed to fetch leaf parent account information"
-
-#: components/auth/src/flows/FlowLogin.tsx
-msgid "Leaf Account Warning"
-msgstr "You're signing up with a leaf account, which will give {username} limited access to information about your account and activity. If you believe this is an error, please request a new invite from {username}."

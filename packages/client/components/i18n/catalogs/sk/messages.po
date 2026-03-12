@@ -611,6 +611,10 @@ msgstr ""
 msgid "Check your mail!"
 msgstr "Skontrolujte si email!"
 
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Child Account"
+msgstr ""
+
 #: components/auth/src/flows/FlowLogin.tsx
 msgid "Choose a username"
 msgstr ""
@@ -873,6 +877,7 @@ msgid "Create invite"
 msgstr "Vytvoriť pozvánku"
 
 #: components/modal/modals/CreateInvite.tsx
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
 msgid "Create Invite"
 msgstr ""
 
@@ -1093,6 +1098,10 @@ msgstr ""
 msgid "Donated to Stoat"
 msgstr ""
 
+#: components/ui/components/features/profiles/ProfileBadges.tsx
+msgid "Donating to Stoat"
+msgstr ""
+
 #: components/modal/modals/MFARecovery.tsx
 msgid "Done"
 msgstr "Hotovo"
@@ -1171,8 +1180,8 @@ msgid "Emoji Name"
 msgstr ""
 
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
-msgid "Emoji Pack (affects your messages only)"
-msgstr ""
+#~ msgid "Emoji Pack (affects your messages only)"
+#~ msgstr ""
 
 #: components/app/interface/settings/ServerSettings.tsx
 msgid "Emojis"
@@ -1222,8 +1231,16 @@ msgid "Enter your current password..."
 msgstr ""
 
 #: components/auth/src/flows/Form.tsx
+msgid "Enter your invite code."
+msgstr ""
+
+#: components/auth/src/flows/Form.tsx
 msgid "Enter your preferred username."
 msgstr "Zadaj tvoje používateľské meno."
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Existing Invites"
+msgstr ""
 
 #: components/modal/modals/LinkWarning.tsx
 msgid "External links can be dangerous!"
@@ -1453,6 +1470,7 @@ msgstr "Pozvite všetkých svojich priateľov, pár cool robotov a usporiadajte 
 msgid "Invite Bot"
 msgstr ""
 
+#: components/auth/src/flows/Form.tsx
 #: components/app/interface/settings/server/invites/ListServerInvites.tsx
 msgid "Invite Code"
 msgstr "Kód Pozvánky"
@@ -1461,6 +1479,10 @@ msgstr "Kód Pozvánky"
 msgid "Invite Others"
 msgstr "Pozvať Ostatných"
 
+#: components/app/interface/settings/UserSettings.tsx
+msgid "Invite Someone"
+msgstr ""
+
 #: components/app/interface/settings/server/invites/ListServerInvites.tsx
 msgid "Inviter"
 msgstr "Pozývateľ"
@@ -1468,6 +1490,10 @@ msgstr "Pozývateľ"
 #: components/app/interface/settings/ServerSettings.tsx
 msgid "Invites"
 msgstr "Pozvánky"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Inviting many low quality users may result in your account receiving a strike or being banned."
+msgstr ""
 
 #: components/ui/components/features/profiles/ProfileBadges.tsx
 msgid "irrelevant joke badge 1"
@@ -1501,8 +1527,8 @@ msgid "Join the Stoat Lounge"
 msgstr ""
 
 #: components/ui/components/features/voice/callCard/VoiceCallCardPreview.tsx
-msgid "Join the voice channel"
-msgstr ""
+#~ msgid "Join the voice channel"
+#~ msgstr ""
 
 #: components/ui/components/features/profiles/ProfileJoined.tsx
 #: components/ui/components/features/messaging/elements/Invite.tsx
@@ -2153,6 +2179,10 @@ msgstr "Zaregistrovať"
 msgid "Registered since <0/>"
 msgstr ""
 
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Regular Account"
+msgstr ""
+
 #: components/app/menus/UserContextMenu.tsx
 msgid "Reject friend request"
 msgstr ""
@@ -2585,8 +2615,8 @@ msgid "Submit to Discover"
 msgstr ""
 
 #: components/app/interface/settings/UserSettings.tsx
-msgid "Subscriptions"
-msgstr ""
+#~ msgid "Subscriptions"
+#~ msgstr ""
 
 #: components/app/interface/settings/user/Feedback.tsx
 msgid "Suggest new Stoat features on GitHub discussions."
@@ -2597,8 +2627,8 @@ msgid "Support the project by donating - thank you!"
 msgstr "Podporte projekt príspevkom - ďakujeme!"
 
 #: components/ui/components/features/voice/callCard/VoiceCallCardPreview.tsx
-msgid "Switch to this voice channel"
-msgstr ""
+#~ msgid "Switch to this voice channel"
+#~ msgstr ""
 
 #: components/app/interface/settings/user/Sync.tsx
 msgid "Sync appearance options, such as chosen emoji pack and message density."
@@ -2700,6 +2730,10 @@ msgstr ""
 
 #: components/i18n/errors.ts
 msgid "This has already been sent."
+msgstr ""
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "This invite is one use, and will be tied to your account."
 msgstr ""
 
 #: components/ui/components/features/messaging/elements/ConversationStart.tsx
