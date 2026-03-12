@@ -65,7 +65,29 @@ export function unicodeEmojiUrl(
   pack: UnicodeEmojiPacks = "fluent-3d",
   text: string,
 ) {
-  return `https://static.stoat.chat/emoji/${pack}/${toCodepoint(text)}.svg?v=1`;
+  var codePoint = toCodepoint(text);
+  const codePointPieces = codePoint.split("-");
+  // if codepoint is only 2 characters, and the second character is fe0f, remove the second character
+  if (codePointPieces.length === 2 && codePointPieces[1] === "fe0f") {
+    codePoint = codePoint.replace("-fe0f", "");
+    return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+  }
+  // if codepoint is "2a-fe0f-20e3" (ie. #️⃣), change it to "2a-20e3" (just an example, match that format and rewrite)
+  if (codePointPieces.length === 3 && codePointPieces[1] === "fe0f") {
+    codePoint = codePointPieces[0] + "-" + codePointPieces[2];
+    return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+  }
+  // if codepoint is "1f441-fe0f-200d-1f5e8-fe0f" (ie. 👁️‍🗨️), change it to "1f441-200d-1f5e8" (just an example, match that format and rewrite)
+  if (
+    codePointPieces.length === 5 &&
+    codePointPieces[1] === "fe0f" &&
+    codePointPieces[4] === "fe0f"
+  ) {
+    codePoint =
+      codePointPieces[0] + "-" + codePointPieces[2] + "-" + codePointPieces[3];
+    return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+  }
+  return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
 }
 
 /**

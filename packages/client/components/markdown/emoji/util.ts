@@ -31,14 +31,13 @@ export function isOnlyEmoji(text: string) {
  */
 export function injectEmojiSize(
   props: MarkdownProps,
-  hastNode: { children?: { properties: Record<string, string> }[] },
+  hastNode: { children?: { properties: Record }[] },
 ) {
   const content = props.content ?? "";
 
   // inject emoji size information
-  const properties = (
-    hastNode as { children?: { properties: Record<string, string> }[] }
-  ).children?.[0].properties;
+  const properties = (hastNode as { children?: { properties: Record }[] })
+    .children?.[0].properties;
 
   // inject custom property
   if (properties) {

@@ -6,7 +6,6 @@ import { styled } from "styled-system/jsx";
 
 import { useUser } from "@revolt/client";
 import {
-  UNICODE_EMOJI_PACKS,
   UnicodeEmoji,
   UnicodeEmojiPacks,
 } from "@revolt/markdown/emoji/UnicodeEmoji";
@@ -392,7 +391,7 @@ export function AppearanceMenu() {
           <Trans>Show send message button</Trans>
         </Checkbox>
 
-        <Text class="label">
+        {/* <Text class="label">
           <Trans>Emoji Pack (affects your messages only)</Trans>
         </Text>
         <TextField.Select
@@ -407,7 +406,7 @@ export function AppearanceMenu() {
           <For each={UNICODE_EMOJI_PACKS}>
             {(pack) => <EmojiPack pack={pack} />}
           </For>
-        </TextField.Select>
+        </TextField.Select> */}
       </Column>
     </Column>
   );
