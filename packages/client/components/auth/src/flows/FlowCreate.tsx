@@ -1,14 +1,13 @@
 import { Trans } from "@lingui-solid/solid/macro";
 
+import { useApi, useClient } from "@revolt/client";
 import { CONFIGURATION } from "@revolt/common";
-import { useNavigate } from "@revolt/routing";
+import { useNavigate, useParams } from "@revolt/routing";
 import { Button, Row, iconSize } from "@revolt/ui";
 
 import MdArrowBack from "@material-design-icons/svg/filled/arrow_back.svg?component-solid";
 
-import { useApi } from "../../../client";
-
-import { createSignal, onMount } from "solid-js";
+import { Show } from "solid-js";
 import { FlowTitle } from "./Flow";
 import { setFlowCheckEmail } from "./FlowCheck";
 import { Fields, Form } from "./Form";
@@ -18,25 +17,9 @@ import { Fields, Form } from "./Form";
  */
 export default function FlowCreate() {
   const api = useApi();
+  const getClient = useClient();
   const navigate = useNavigate();
-
-  /**
-   * Retrieve whether the current backend is invite_only
-   */
-  const [inviteOnly, setInviteOnly] = createSignal<boolean | null>(null);
-
-  onMount(async () => {
-    try {
-      const data = (await api.get("/")) as {
-        features: {
-          invite_only: boolean;
-        };
-      };
-      setInviteOnly(data.features.invite_only);
-    } catch {
-      setInviteOnly(false);
-    }
-  });
+  const { code } = useParams();
 
   /**
    * Create an account
@@ -46,13 +29,13 @@ export default function FlowCreate() {
     const email = data.get("email") as string;
     const password = data.get("password") as string;
     const captcha = data.get("captcha") as string;
-    const invite = data.get("invite-code") as string | null;
+    const invite = data.get("invite") as string;
 
     await api.post("/auth/account/create", {
       email,
       password,
       captcha,
-      invite,
+      ...(invite ? { invite } : {}),
     });
 
     // FIXME: should tell client if email was sent
@@ -64,19 +47,28 @@ export default function FlowCreate() {
     navigate("/login/check", { replace: true });
   }
 
+  const isInviteOnly = () => {
+    const client = getClient();
+    if (client.configured()) {
+      return client.configuration?.features.invite_only;
+    }
+    return false;
+  };
+
   return (
     <>
       <FlowTitle subtitle={<Trans>Create an account</Trans>} emoji="wave">
         <Trans>Hello!</Trans>
       </FlowTitle>
       <Form onSubmit={create} captcha={CONFIGURATION.HCAPTCHA_SITEKEY}>
-        {inviteOnly() === null ? (
-          <Fields fields={["email", "password"]} />
-        ) : inviteOnly() ? (
-          <Fields fields={["email", "password", "invite-code"]} />
-        ) : (
-          <Fields fields={["email", "password"]} />
-        )}
+        <Fields fields={["email", "password"]} />
+        <Show when={isInviteOnly()}>
+          <Fields
+            fields={[
+              { field: "invite", value: code, disabled: code?.length > 0 },
+            ]}
+          />
+        </Show>
         <Row justify>
           <a href="..">
             <Button variant="text">
