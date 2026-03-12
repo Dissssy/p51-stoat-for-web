@@ -58,21 +58,16 @@ const useFieldConfiguration = () => {
       placeholder: () => t`Enter your preferred username.`,
       value: undefined,
     },
-    "invite-code": {
-      type: "text" as const,
-      name: () => t`Invite Code`,
-      placeholder: () => t`Enter your invite code.`,
-      value: () => {
-        const params = new URLSearchParams(window.location.search);
-        return params.get("code") || undefined;
-      },
-    },
     invite: {
       minLength: 1,
       type: "text" as const,
       autocomplete: "none",
       name: () => t`Invite Code`,
       placeholder: () => t`Enter your invite code.`,
+      value: () => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("code") || undefined;
+      },
     },
   };
 };
@@ -118,7 +113,7 @@ export function Fields(props: FieldProps) {
                 label={fieldConfiguration[field.field].name()}
                 placeholder={fieldConfiguration[field.field].placeholder()}
                 disabled={field.disabled}
-                value={field.value}
+                value={fieldConfiguration[field.field].value?.() || field.value}
               />
             )}
           </label>
