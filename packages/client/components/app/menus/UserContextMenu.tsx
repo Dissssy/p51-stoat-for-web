@@ -39,13 +39,15 @@ import { NotificationContextMenu } from "./shared/NotificationContextMenu";
 /**
  * Context menu for users
  */
-export function UserContextMenu(props: {
-  user: User;
-  channel?: Channel;
-  member?: ServerMember;
-  contextMessage?: Message;
-  inVoice?: boolean;
-}) {
+export function UserContextMenu(
+  props: {
+    user: User;
+    channel?: Channel;
+    member?: ServerMember;
+    contextMessage?: Message;
+    inVoice?: boolean;
+  },
+) {
   // TODO: if we take serverId instead, we could dynamically fetch server member here
   // same for the floating menu I guess?
   const state = useState();
@@ -60,7 +62,10 @@ export function UserContextMenu(props: {
    * Open direct message channel
    */
   function openDm() {
-    props.user.openDM().then((channel) => navigate(channel.url));
+    props.user.openDM().then((channel) => {
+      const url = "/channel/" + channel.id;
+      navigate(url);
+    });
   }
 
   /**

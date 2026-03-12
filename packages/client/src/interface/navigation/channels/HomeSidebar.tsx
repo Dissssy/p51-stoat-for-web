@@ -13,7 +13,6 @@ import { useModals } from "@revolt/modal";
 import { useLocation, useNavigate } from "@revolt/routing";
 import {
   Avatar,
-  Deferred,
   MenuButton,
   OverflowingText,
   Tooltip,
@@ -41,9 +40,7 @@ interface Props {
   /**
    * Open the saved notes channel
    */
-  openSavedNotes: (
-    navigate?: ReturnType<typeof useNavigate>,
-  ) => string | undefined;
+  openSavedNotes: (navigate?: ReturnType) => string | undefined;
 }
 
 /**
@@ -165,32 +162,41 @@ export const HomeSidebar = (props: Props) => {
             </a>
           </Category>
 
-          <Deferred>
-            <VirtualContainer
-              items={props.conversations()}
-              scrollTarget={scrollTargetElement}
-              itemSize={{ height: 48 }}
-            >
-              {(item) => (
-                <div
-                  style={{
-                    ...item.style,
-                    width: "100%",
-                    "padding-block": "3px",
-                  }}
-                >
+          {/* <Deferred> */}
+          <VirtualContainer
+            items={props.conversations()}
+            scrollTarget={scrollTargetElement}
+            itemSize={{ height: 48 }}
+          >
+            {(item) => {
+              const keys = Object.keys(item.style);
+              var style: Record = {
+                width: "100%",
+                "padding-block": "3px",
+              };
+              for (let i = 0; i < keys.length; i++) {
+                const key = keys[i];
+                if (key === "width") {
+                  style["width"] = "100%";
+                } else {
+                  style[key] = item.style[key];
+                }
+              }
+              return (
+                <div style={style}>
                   <Entry
                     // @ts-expect-error missing type on Entry
                     role="listitem"
                     tabIndex={item.tabIndex}
-                    style={item.style}
+                    style={style}
                     channel={item.item}
                     active={item.item.id === props.channelId}
                   />
                 </div>
-              )}
-            </VirtualContainer>
-          </Deferred>
+              );
+            }}
+          </VirtualContainer>
+          {/* </Deferred> */}
         </List>
       </div>
     </SidebarBase>
@@ -279,12 +285,12 @@ function Entry(
       s === "Online"
         ? t`Online`
         : s === "Busy"
-          ? t`Busy`
-          : s === "Focus"
-            ? t`Focus`
-            : s === "Idle"
-              ? t`Idle`
-              : t`Offline`,
+        ? t`Busy`
+        : s === "Focus"
+        ? t`Focus`
+        : s === "Idle"
+        ? t`Idle`
+        : t`Offline`,
     );
 
   return (
@@ -300,10 +306,10 @@ function Entry(
           local.active
             ? "selected"
             : local.channel.muted
-              ? "muted"
-              : local.channel.unread
-                ? "active"
-                : "normal"
+            ? "muted"
+            : local.channel.unread
+            ? "active"
+            : "normal"
         }
         icon={
           <Switch>

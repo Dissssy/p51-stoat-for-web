@@ -147,9 +147,11 @@ export function ImageViewerModal(
                   <Image
                     ref={setRef}
                     style={{
-                      "aspect-ratio": `${(props.file!.metadata as { width: number }).width}/${(props.file!.metadata as { height: number }).height}`,
+                      "aspect-ratio": `${
+                        (props.file!.metadata as { width: number }).width
+                      }/${(props.file!.metadata as { height: number }).height}`,
                     }}
-                    src={props.file!.originalUrl}
+                    src={props.file!.originalUrl.split("/original")[0]} // Hacky fix to some weird redirect stuff going on with proxied URLs
                     onClick={(e) => e.stopPropagation()}
                   />
                 </Match>
@@ -157,7 +159,9 @@ export function ImageViewerModal(
                   <Image
                     ref={setRef}
                     style={{
-                      "aspect-ratio": `${props.embed!.width}/${props.embed!.height}`,
+                      "aspect-ratio": `${props.embed!.width}/${
+                        props.embed!.height
+                      }`,
                     }}
                     src={props.embed!.proxiedURL}
                     onClick={(e) => e.stopPropagation()}
@@ -170,7 +174,9 @@ export function ImageViewerModal(
                     muted
                     autoplay
                     style={{
-                      "aspect-ratio": `${props.gif!.width}/${props.gif!.height}`,
+                      "aspect-ratio": `${props.gif!.width}/${
+                        props.gif!.height
+                      }`,
                     }}
                     src={props.gif!.url}
                     onClick={(e) => e.stopPropagation()}

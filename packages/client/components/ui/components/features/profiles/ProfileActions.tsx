@@ -18,12 +18,14 @@ import { iconSize } from "../../utils";
 /**
  * Actions shown on profile cards
  */
-export function ProfileActions(props: {
-  width: 2 | 3;
+export function ProfileActions(
+  props: {
+    width: 2 | 3;
 
-  user: User;
-  member?: ServerMember;
-}) {
+    user: User;
+    member?: ServerMember;
+  },
+) {
   const navigate = useNavigate();
   const { openModal } = useModals();
 
@@ -31,7 +33,10 @@ export function ProfileActions(props: {
    * Open direct message channel
    */
   function openDm() {
-    props.user.openDM().then((channel) => navigate(channel.url));
+    props.user.openDM().then((channel) => {
+      const url = "/channel/" + channel.id;
+      navigate(url);
+    });
   }
 
   /**

@@ -162,7 +162,6 @@ export function MessageComposition(props: Props) {
   async function sendMessage(useContent?: unknown) {
     stopTyping();
     props.onMessageSend?.();
-
     if (typeof useContent === "string") {
       const currentDraft = draft();
       if (
@@ -178,7 +177,6 @@ export function MessageComposition(props: Props) {
       }
       return props.channel.sendMessage(useContent);
     }
-
     state.draft.sendDraft(client(), props.channel);
   }
 
@@ -365,8 +363,8 @@ export function MessageComposition(props: Props) {
           props.channel.type === "SavedMessages"
             ? t`Save to your notes`
             : props.channel.type === "DirectMessage"
-              ? t`Message ${props.channel.recipient?.username}`
-              : t`Message ${props.channel.name}`
+            ? t`Message ${props.channel.recipient?.username}`
+            : t`Message ${props.channel.name}`
         }
         sendingAllowed={props.channel.havePermission("SendMessage")}
         autoCompleteSearchSpace={searchSpace}

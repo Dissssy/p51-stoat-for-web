@@ -7,8 +7,9 @@ import MdEgg from "@material-design-icons/svg/outlined/egg.svg?component-solid";
 import MdPersonAdd from "@material-design-icons/svg/outlined/person_add.svg?component-solid";
 import MdRefresh from "@material-design-icons/svg/outlined/refresh.svg?component-solid";
 import { useClient } from "@revolt/client";
-import { Button, Column, Row, SplitMultiButton } from "@revolt/ui";
+import { Button, Column, Deferred, Row, SplitMultiButton } from "@revolt/ui";
 import { Divider } from "styled-system/jsx";
+import TreeGraph from "./ViewTreeGraph";
 
 /**
  * Component for creating an instance invite. This is a one use invite that is tied to the user's account. Inviting many low quality users may result in the user's account receiving a strike or being banned.
@@ -144,12 +145,12 @@ export default function CreateInvite() {
         message: error instanceof Error ? error.message : String(error),
       });
     }
-    getInvites();
+    await getInvites();
   }
 
-  onMount(() => {
+  onMount(async () => {
     // when the component is mounted, trip the function to fetch the users invites
-    getInvites();
+    await getInvites();
   });
 
   return (
@@ -175,7 +176,7 @@ export default function CreateInvite() {
       {/* <Button onPress={createInvite}>
         <Trans>Create Invite</Trans>
       </Button> */}
-      {invites() !== null && invites().length > 0 && (
+      {invites() !== null && (
         <Column style={{ "margin-top": "1em" }}>
           <Row style={{ "justify-content": "space-between" }}>
             {/* <Button isDisabled={true} group="connected-start">
@@ -195,12 +196,16 @@ export default function CreateInvite() {
               onPressLeft={undefined}
               labelRight={<MdRefresh />}
               disabledRight={false}
-              onPressRight={getInvites}
+              onPressRight={async () => {
+                await getInvites();
+              }}
             />
             <SplitMultiButton
               labelLeft={<Trans>Create Invite</Trans>}
               disabledLeft={false}
-              onPressLeft={createInvite}
+              onPressLeft={async () => {
+                await createInvite();
+              }}
               labelRight={
                 <>
                   {isLeaf() ? (
@@ -210,18 +215,19 @@ export default function CreateInvite() {
                     </>
                   ) : (
                     <>
-                      <Trans>Regular User</Trans>
+                      <Trans>Regular Account</Trans>
                       <MdPersonAdd style={{ "margin-left": "0.5em" }} />
                     </>
                   )}
                 </>
               }
               disabledRight={false}
-              onPressRight={toggleLeaf}
+              onPressRight={async () => {
+                await toggleLeaf();
+              }}
             />
           </Row>
-
-          <Divider />
+          {invites().length > 0 && <Divider />}
           <div
             style={{
               display: "flex",
@@ -290,6 +296,9 @@ export default function CreateInvite() {
               </>
             ))}
           </div>
+          <Deferred>
+            <TreeGraph />
+          </Deferred>
         </Column>
       )}
     </Column>

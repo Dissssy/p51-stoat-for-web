@@ -3242,6 +3242,14 @@ msgstr "Failed to create invite"
 msgid "Invite link copied to clipboard"
 msgstr "Invite link copied to clipboard"
 
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Child Account"
+msgstr "Child Account"
+
+#: components/app/interface/settings/instance/CreateInstanceInvite.tsx
+msgid "Regular Account"
+msgstr "Regular Account"
+
 #: components/auth/src/flows/FlowLogin.tsx
 msgid "Failed to fetch leaf parent account information"
 msgstr "Failed to fetch leaf parent account information"

@@ -1,4 +1,4 @@
-import { Accessor, Setter, batch, createSignal } from "solid-js";
+import { Setter, batch, createSignal } from "solid-js";
 
 import { API, Channel, Client, Message } from "stoat.js";
 import { ulid } from "ulid";
@@ -60,12 +60,12 @@ export type TypeDraft = {
   /**
    * All active message drafts
    */
-  drafts: Record<string, DraftData>;
+  drafts: Record;
 
   /**
    * Unsent messages
    */
-  outbox: Record<string, UnsentMessage[]>;
+  outbox: Record;
 
   /**
    * Current message being edited
@@ -92,27 +92,18 @@ export const ALLOWED_IMAGE_TYPES = [
 /**
  * Message drafts store
  */
-export class Draft extends AbstractStore<"draft", TypeDraft> {
+export class Draft extends AbstractStore {
   /**
    * Keep track of cached files
    */
-  private fileCache: Record<
-    string,
-    {
-      file: File;
-      dataUri?: string;
-      dimensions?: [number, number];
-      autumnId?: string;
-      uploadProgress: [Accessor<number>, Setter<number>];
-    }
-  >;
+  private fileCache: Record;
 
   /**
    * Current text selection
    */
   private textSelection?: TextSelection;
 
-  _setNodeReplacement?: Setter<readonly [string | "_focus"] | undefined>;
+  _setNodeReplacement?: Setter;
 
   /**
    * Construct store
@@ -146,7 +137,7 @@ export class Draft extends AbstractStore<"draft", TypeDraft> {
   /**
    * Validate the given data to see if it is compliant and return a compliant object
    */
-  clean(input: Partial<TypeDraft>): TypeDraft {
+  clean(input: Partial): TypeDraft {
     const drafts: TypeDraft["drafts"] = {};
     const outbox: TypeDraft["outbox"] = {};
 
@@ -379,6 +370,7 @@ export class Draft extends AbstractStore<"draft", TypeDraft> {
 
     // Send the message and clear the draft
     try {
+      alert(JSON.stringify(data));
       await channel.sendMessage(data, idempotencyKey);
 
       if (files) {

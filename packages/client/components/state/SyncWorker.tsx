@@ -42,7 +42,11 @@ export function SyncWorker() {
   createEffect(
     on(
       () => state.sync.shouldSync,
-      (shouldSync) => shouldSync && state.sync.save(client()),
+      (shouldSync) => {
+        if (shouldSync) {
+          state.sync.save(client());
+        }
+      },
     ),
   );
 

@@ -1,4 +1,4 @@
-import { ComponentProps, splitProps } from "solid-js";
+import { splitProps } from "solid-js";
 
 import emojiRegex from "emoji-regex";
 
@@ -24,7 +24,7 @@ export const UNICODE_EMOJI_PACKS: UnicodeEmojiPacks[] = [
   "twemoji",
 ];
 
-export const UNICODE_EMOJI_PACK_PUA: Record<string, string> = {
+export const UNICODE_EMOJI_PACK_PUA: Record = {
   // omit fluent-3d as it is the default (canonically \uE0E1)
   "fluent-flat": "\uE0E2",
   mutant: "\uE0E3",
@@ -44,7 +44,7 @@ export const RE_UNICODE_EMOJI = new RegExp(
 export const UNICODE_EMOJI_MIN_PACK = "\uE0E0".codePointAt(0)!;
 export const UNICODE_EMOJI_MAX_PACK = "\uE0E6".codePointAt(0)!;
 
-export const UNICODE_EMOJI_PUA_PACK: Record<string, UnicodeEmojiPacks> = {
+export const UNICODE_EMOJI_PUA_PACK: Record = {
   ["\uE0E0"]: "fluent-3d", // default entry
   ["\uE0E1"]: "fluent-3d",
   ["\uE0E2"]: "fluent-flat",
@@ -72,10 +72,7 @@ export function unicodeEmojiUrl(
  * Display Unicode emoji
  */
 export function UnicodeEmoji(
-  props: { emoji: string; pack?: UnicodeEmojiPacks } & Omit<
-    ComponentProps<typeof EmojiBase>,
-    "loading" | "class" | "alt" | "draggable" | "src"
-  >,
+  props: { emoji: string; pack?: UnicodeEmojiPacks } & Omit,
 ) {
   const [local, remote] = splitProps(props, ["emoji"]);
   const state = useState();
