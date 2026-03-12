@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prepare": "panda codegen"
+    "prepare": "panda codegen",
+    "prebuild": "pnpm exec tsx ./scripts/generatePrecacheList.ts"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^2.0.2",
@@ -29,6 +30,7 @@
     "lnk": "^1.1.0",
     "rehype-stringify": "^10.0.1",
     "stoat.js": "workspace:^",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.3",
     "vite": "^5.4.19",
     "vite-plugin-babel-macros": "^1.0.6",

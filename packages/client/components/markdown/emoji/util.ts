@@ -98,3 +98,34 @@ export function toCodepoint(input: string) {
 
   return "";
 }
+
+const forceRaw = ["1f3f3-fe0f-200d-26a7-fe0f"]; // for some reason these specific emojis DO keep the fe0f
+
+export function unicodeEmojiUrl(
+  // pack: UnicodeEmojiPacks = "fluent-3d",
+  text: string,
+) {
+  var codePoint = toCodepoint(text);
+  if (forceRaw.includes(codePoint)) {
+    return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+  }
+  const codePointPieces = codePoint.split("-");
+  if (codePointPieces.length === 2 && codePointPieces[1] === "fe0f") {
+    codePoint = codePoint.replace("-fe0f", "");
+    return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+  }
+  if (codePointPieces.length === 3 && codePointPieces[1] === "fe0f") {
+    codePoint = codePointPieces[0] + "-" + codePointPieces[2];
+    return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+  }
+  if (
+    codePointPieces.length === 5 &&
+    codePointPieces[1] === "fe0f" &&
+    codePointPieces[4] === "fe0f"
+  ) {
+    codePoint =
+      codePointPieces[0] + "-" + codePointPieces[2] + "-" + codePointPieces[3];
+    return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+  }
+  return `https://static.planetfifty.one/emoji/twemoji-modern/${codePoint}.svg?v=1`;
+}

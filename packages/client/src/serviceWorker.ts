@@ -9,6 +9,18 @@ self.addEventListener("message", (event) => {
 
 cleanupOutdatedCaches();
 
+// Precache URLs from /precache.json
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    fetch("/precache.json")
+      .then((res) => res.json())
+      .then((urls) =>
+        caches.open("precache-emoji").then((cache) => cache.addAll(urls)),
+      )
+      .catch(() => {}),
+  );
+});
+
 // Generate list using scripts/locale.js
 // TODO: update this
 // prettier-ignore
