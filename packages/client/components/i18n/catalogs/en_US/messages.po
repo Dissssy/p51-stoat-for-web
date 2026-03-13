@@ -1351,6 +1351,14 @@ msgstr "Friends"
 msgid "Friends:"
 msgstr "Friends:"
 
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Successfully unlinked child account."
+msgstr "Successfully unlinked child account."
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Failed to fetch leaf users"
+msgstr "Failed to fetch leaf users"
+
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
 msgid "Fruit Salad"
 msgstr "Fruit Salad"
@@ -3310,3 +3318,4 @@ msgstr "Your role ranking is too low to take this action."
 #: components/i18n/errors.ts
 msgid "Your user has already been created? Try logging in again or refreshing the app."
 msgstr "Your user has already been created? Try logging in again or refreshing the app."
+
