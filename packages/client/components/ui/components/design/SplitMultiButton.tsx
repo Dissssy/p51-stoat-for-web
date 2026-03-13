@@ -1,13 +1,22 @@
 import { JSX, Show, createRenderEffect, on, splitProps } from "solid-js";
 
-import { createButton } from "@solid-aria/button";
+import { AriaButtonProps, createButton } from "@solid-aria/button";
 import { cva } from "styled-system/css/cva";
 
 import { Row } from "@revolt/ui";
 import { Ripple } from "./Ripple";
 import { typography } from "./Text";
 
-type Props = Omit & {
+type Props = Omit<
+  Parameters<typeof button>[0] &
+    AriaButtonProps &
+    JSX.DirectiveAttributes &
+    Pick<
+      JSX.ButtonHTMLAttributes<HTMLButtonElement>,
+      "role" | "tabIndex" | "aria-selected"
+    >,
+  "onClick" | "_permitAnimation" | "disabled"
+> & {
   groupActive?: boolean;
   bg?: string;
   labelLeft?: JSX.Element;

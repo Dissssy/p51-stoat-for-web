@@ -464,7 +464,7 @@ export function TextEditor(props: Props) {
                         src: unicodeEmojiUrl(
                           applicationState.settings.getValue(
                             "appearance:unicode_emoji",
-                          ),
+                          ) || "twemoji",
                           match.codepoint,
                         ),
                       })!,

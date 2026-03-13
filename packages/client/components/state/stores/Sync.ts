@@ -12,22 +12,22 @@ type SynchronisedStores = "ordering" | "notifications";
 const STORE_KEYS: SynchronisedStores[] = ["ordering", "notifications"];
 
 export interface TypeSynchronisation {
-  revision: Record;
+  revision: Record<SynchronisedStores, number>;
 }
 
 /**
  * Synchronisation orchestration
  */
-export class Sync extends AbstractStore {
+export class Sync extends AbstractStore<"sync", TypeSynchronisation> {
   /**
    * Block sync for remote updates
    */
-  #blockSync: Set;
+  #blockSync: Set<SynchronisedStores>;
 
   /**
    * Keys that need to be synced out
    */
-  #syncQueue: ReactiveSet;
+  #syncQueue: ReactiveSet<SynchronisedStores>;
 
   /**
    * Construct store
@@ -59,7 +59,7 @@ export class Sync extends AbstractStore {
   /**
    * Validate the given data to see if it is compliant and return a compliant object
    */
-  clean(input: Partial): TypeSynchronisation {
+  clean(input: Partial<TypeSynchronisation>): TypeSynchronisation {
     return {
       revision: Object.keys(input.revision ?? {})
         .filter((key) => STORE_KEYS.includes(key as SynchronisedStores))
@@ -179,7 +179,7 @@ export class Sync extends AbstractStore {
    * Consume client events
    * @param event Update event
    */
-  consumeEvent(event: Record) {
+  consumeEvent(event: Record<string, [number, string]>) {
     for (const key in event) {
       if (STORE_KEYS.includes(key as SynchronisedStores)) {
         const [ts, data] = event[key];
