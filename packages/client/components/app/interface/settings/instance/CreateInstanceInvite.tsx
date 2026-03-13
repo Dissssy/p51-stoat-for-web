@@ -16,7 +16,10 @@ import TreeGraph from "./ViewTreeGraph";
  */
 export default function CreateInvite() {
   // const [inviteCode, setInviteCode] = createSignal<string | null>(null);
-  const [statusMessage, setStatusMessage] = createSignal<Record | null>(null);
+  const [statusMessage, setStatusMessage] = createSignal<Record<
+    string,
+    any
+  > | null>(null);
   const [invites, setInvites] = createSignal<any[]>([]); // for now we dont have a type for invites, so we'll just use any
   const [isLeaf, setIsLeaf] = createSignal(false);
   const client = useClient();
@@ -161,18 +164,20 @@ export default function CreateInvite() {
         Inviting many low quality users may result in your account receiving a
         strike or being banned.
       </Trans>
+      <br />
       {statusMessage() && statusMessage() !== null && (
         <>
           <br />
           <p
             style={{
-              color: statusMessage().type === "error" ? "red" : "green",
+              color: statusMessage()!.type === "error" ? "red" : "green",
             }}
           >
-            {statusMessage().message}
+            {statusMessage()!.message}
           </p>
         </>
       )}
+      <br />
       {/* <Button onPress={createInvite}>
         <Trans>Create Invite</Trans>
       </Button> */}

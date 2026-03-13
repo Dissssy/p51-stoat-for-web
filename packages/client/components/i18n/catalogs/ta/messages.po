@@ -1246,7 +1246,6 @@ msgid "Enter your current password..."
 msgstr ""
 
 #: components/auth/src/flows/Form.tsx
-#: components/auth/src/flows/Form.tsx
 msgid "Enter your invite code."
 msgstr ""
 
@@ -1331,6 +1330,10 @@ msgstr ""
 #: src/interface/navigation/channels/HomeSidebar.tsx
 msgid "Friends"
 msgstr "நண்பர்கள்"
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Friends:"
+msgstr ""
 
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
 msgid "Fruit Salad"
@@ -1486,7 +1489,6 @@ msgstr ""
 msgid "Invite Bot"
 msgstr ""
 
-#: components/auth/src/flows/Form.tsx
 #: components/auth/src/flows/Form.tsx
 #: components/app/interface/settings/server/invites/ListServerInvites.tsx
 msgid "Invite Code"
@@ -1677,6 +1679,10 @@ msgstr ""
 
 #: components/app/interface/settings/channel/permissions/ChannelPermissionsEditor.tsx
 msgid "Manage Channel"
+msgstr ""
+
+#: components/app/interface/settings/UserSettings.tsx
+msgid "Manage Children"
 msgstr ""
 
 #: components/app/interface/settings/channel/permissions/ChannelPermissionsEditor.tsx
@@ -2497,6 +2503,10 @@ msgstr "சர்வர் பெயர்"
 msgid "Server Roles"
 msgstr ""
 
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Servers:"
+msgstr ""
+
 #: components/app/interface/settings/UserSettings.tsx
 msgid "Sessions"
 msgstr "அமர்வுகள்"
@@ -2716,6 +2726,10 @@ msgstr ""
 msgid "Theme"
 msgstr "தீம்"
 
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "These accounts are tied to your account, and you can view them here. You can also remove them if you no longer want them to be associated with your account."
+msgstr ""
+
 #: components/i18n/errors.ts
 msgid "This account is not activated! Please check your account's inbox and try again."
 msgstr ""
@@ -2759,6 +2773,10 @@ msgstr ""
 
 #: components/app/interface/settings/instance/CreateInstanceInvite.tsx
 msgid "This invite is one use, and will be tied to your account."
+msgstr ""
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "This is a list of accounts you have invited with leaf invites."
 msgstr ""
 
 #: components/ui/components/features/messaging/elements/ConversationStart.tsx
@@ -2837,6 +2855,10 @@ msgstr ""
 
 #: components/markdown/plugins/anchors.tsx
 msgid "Unknown Server"
+msgstr ""
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Unlink"
 msgstr ""
 
 #: components/modal/modals/ChannelToggleMature.tsx
@@ -3172,6 +3194,10 @@ msgstr "இந்தச் சேனலில் செய்திகளை அ
 
 #: components/i18n/errors.ts
 msgid "You have been locked out for entering a wrong password multiple times. Please wait a couple minutes and try again."
+msgstr ""
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "You have not invited any accounts with leaf invites."
 msgstr ""
 
 #: components/i18n/errors.ts

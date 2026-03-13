@@ -1230,7 +1230,6 @@ msgid "Enter your current password..."
 msgstr "Enter your current password..."
 
 #: components/auth/src/flows/Form.tsx
-#: components/auth/src/flows/Form.tsx
 msgid "Enter your invite code."
 msgstr ""
 
@@ -1330,6 +1329,10 @@ msgstr "For 8 hours"
 #: src/interface/Friends.tsx
 #: src/interface/navigation/channels/HomeSidebar.tsx
 msgid "Friends"
+msgstr ""
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Friends:"
 msgstr ""
 
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
@@ -1481,7 +1484,6 @@ msgstr ""
 msgid "Invite Bot"
 msgstr "Invite Bot"
 
-#: components/auth/src/flows/Form.tsx
 #: components/auth/src/flows/Form.tsx
 #: components/app/interface/settings/server/invites/ListServerInvites.tsx
 msgid "Invite Code"
@@ -1681,6 +1683,10 @@ msgstr "Malware or phishing"
 #: components/app/interface/settings/channel/permissions/ChannelPermissionsEditor.tsx
 msgid "Manage Channel"
 msgstr "Manage Channel"
+
+#: components/app/interface/settings/UserSettings.tsx
+msgid "Manage Children"
+msgstr ""
 
 #: components/app/interface/settings/channel/permissions/ChannelPermissionsEditor.tsx
 msgid "Manage Customisation"
@@ -2492,6 +2498,10 @@ msgstr ""
 msgid "Server Roles"
 msgstr "Server Roles"
 
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Servers:"
+msgstr ""
+
 #: components/app/interface/settings/UserSettings.tsx
 msgid "Sessions"
 msgstr ""
@@ -2703,6 +2713,10 @@ msgstr "The password is too short."
 msgid "Theme"
 msgstr ""
 
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "These accounts are tied to your account, and you can view them here. You can also remove them if you no longer want them to be associated with your account."
+msgstr ""
+
 #: components/i18n/errors.ts
 msgid "This account is not activated! Please check your account's inbox and try again."
 msgstr "This account is not activated! Please check your account's inbox and try again."
@@ -2747,6 +2761,10 @@ msgstr "This has already been sent."
 #: components/app/interface/settings/instance/CreateInstanceInvite.tsx
 msgid "This invite is one use, and will be tied to your account."
 msgstr "This invite is one use, and will be tied to your account."
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "This is a list of accounts you have invited with leaf invites."
+msgstr ""
 
 #: components/ui/components/features/messaging/elements/ConversationStart.tsx
 msgid "This is the start of your conversation."
@@ -2825,6 +2843,10 @@ msgstr "Uncaught Planet 51 error: {0}"
 #: components/markdown/plugins/anchors.tsx
 msgid "Unknown Server"
 msgstr "Unknown Server"
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "Unlink"
+msgstr ""
 
 #: components/modal/modals/ChannelToggleMature.tsx
 msgid "Unmark as mature"
@@ -3147,6 +3169,10 @@ msgstr ""
 #: components/i18n/errors.ts
 msgid "You have been locked out for entering a wrong password multiple times. Please wait a couple minutes and try again."
 msgstr "You have been locked out for entering a wrong password multiple times. Please wait a couple minutes and try again."
+
+#: components/app/interface/settings/instance/ManageChildren.tsx
+msgid "You have not invited any accounts with leaf invites."
+msgstr ""
 
 #: components/i18n/errors.ts
 msgid "You have this user blocked."

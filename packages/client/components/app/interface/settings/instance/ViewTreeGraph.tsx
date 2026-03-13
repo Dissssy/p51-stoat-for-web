@@ -52,7 +52,7 @@ export default function TreeGraph() {
   // graph.render();
   // return <div id="tree-graph" style={{ width: "100%", height: "400px" }}></div>;
 
-  const [data, setData] = createSignal<Record>({
+  const [data, setData] = createSignal<Record<string, any>>({
     nodes: [
       // {
       //   id: "root",
@@ -61,7 +61,7 @@ export default function TreeGraph() {
     ],
     edges: [],
   });
-  const [render, setRender] = createSignal<bool>(false);
+  const [render, setRender] = createSignal<boolean>(false);
 
   const graph = new Graph({
     container: "tree-graph",

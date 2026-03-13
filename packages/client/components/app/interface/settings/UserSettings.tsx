@@ -11,6 +11,7 @@ import { Symbol } from "@revolt/ui/components/utils/Symbol";
 
 import MdAccountCircle from "@material-design-icons/svg/outlined/account_circle.svg?component-solid";
 import MdCoffee from "@material-design-icons/svg/outlined/coffee.svg?component-solid";
+import MdEgg from "@material-design-icons/svg/outlined/egg.svg?component-solid";
 import MdLanguage from "@material-design-icons/svg/outlined/language.svg?component-solid";
 import MdLogout from "@material-design-icons/svg/outlined/logout.svg?component-solid";
 import MdMemory from "@material-design-icons/svg/outlined/memory.svg?component-solid";
@@ -23,8 +24,10 @@ import MdVerifiedUser from "@material-design-icons/svg/outlined/verified_user.sv
 
 import pkg from "../../../../../../package.json";
 
+import { Server } from "stoat.js/lib/classes/Server";
 import { SettingsConfiguration } from ".";
 import CreateInvite from "./instance/CreateInstanceInvite";
+import ManageChildren from "./instance/ManageChildren";
 import { MyAccount } from "./user/Account";
 import AdvancedSettings from "./user/Advanced";
 import { Feedback } from "./user/Feedback";
@@ -38,7 +41,7 @@ import { EditProfile } from "./user/profile";
 import { EditSubscription } from "./user/subscriptions";
 import { VoiceSettings } from "./user/voice/VoiceSettings";
 
-const Config: SettingsConfiguration = {
+const Config: SettingsConfiguration<{ server: Server }> = {
   /**
    * Page titles
    * @param key
@@ -94,6 +97,8 @@ const Config: SettingsConfiguration = {
         return <VoiceSettings />;
       case "create-instance-invite":
         return <CreateInvite />;
+      case "manage-children":
+        return <ManageChildren />;
       default:
         return null;
     }
@@ -284,6 +289,11 @@ const Config: SettingsConfiguration = {
               id: "create-instance-invite",
               icon: <MdVerifiedUser {...iconSize(20)} />,
               title: <Trans>Invite Someone</Trans>,
+            },
+            {
+              id: "manage-children",
+              icon: <MdEgg {...iconSize(20)} />,
+              title: <Trans>Manage Children</Trans>,
             },
             {
               id: "logout",
